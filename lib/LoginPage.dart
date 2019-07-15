@@ -95,6 +95,11 @@ class _LoginState extends State <LoginPage> {
             maxWidth: 250,
           ),
           child: new TextField(
+            
+            style: TextStyle(
+              fontSize: 24,
+              color: Colors.white
+            ),
           ),
         ),
       ],
