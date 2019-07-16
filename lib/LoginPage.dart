@@ -12,16 +12,18 @@ class _LoginState extends State <LoginPage> {
    double width;
    double height;
 
+   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
    TextEditingController _accountController = new TextEditingController();
    TextEditingController _passwordController = new TextEditingController();
 
 
-  _pushToHomePage() {
+  _pushToHomePage(BuildContext buildContext) {
     if(_accountController.text.toString() == "zhoujiahui03" && _passwordController.text.toString() == "123456") {
 //        Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("登录成功")));
         Navigator.push(context, new MaterialPageRoute(builder: (context)=> new HomePage()));
     } else {
-//      Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("用户名密码有误")));
+      _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text("用户名密码有误")));
     }
   }
 
@@ -33,6 +35,7 @@ class _LoginState extends State <LoginPage> {
     this.height = size.height;
 
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text("登录login"),
       ),
@@ -72,7 +75,7 @@ class _LoginState extends State <LoginPage> {
                   ),
                   color: Colors.white,
                   splashColor: Colors.green,
-                  onPressed: _pushToHomePage,
+                  onPressed:() => _pushToHomePage(context),
                   child: Text("登 录",
                     style: new TextStyle(
                       fontSize: 24,
