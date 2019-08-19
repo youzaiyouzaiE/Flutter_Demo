@@ -19,12 +19,13 @@ class _LoginState extends State <LoginPage> {
 
 
   _pushToHomePage(BuildContext buildContext) {
-    if(_accountController.text.toString() == "zhoujiahui03" && _passwordController.text.toString() == "123456") {
+//    if(_accountController.text.toString() == "zhoujiahui03" && _passwordController.text.toString() == "123456") {
 //        Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("登录成功")));
-        Navigator.push(context, new MaterialPageRoute(builder: (context)=> new HomePage()));
-    } else {
-      _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text("用户名密码有误")));
-    }
+      HomePage page = new HomePage();
+        Navigator.push(context, new MaterialPageRoute(builder: (context)=> page));
+//    } else {
+//      _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text("用户名、密码有误！")));
+//    }
   }
 
   @override
@@ -37,7 +38,7 @@ class _LoginState extends State <LoginPage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text("登录login"),
+        title: Text("登录"),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -91,7 +92,6 @@ class _LoginState extends State <LoginPage> {
   }
 
   Widget _inputItem(IconData icon, String label, bool secure, TextEditingController controller) {
-    double textFieldW = this.width - 140;
     return new Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children:[
@@ -107,10 +107,7 @@ class _LoginState extends State <LoginPage> {
             ),
           ),
         ),
-        new ConstrainedBox (
-          constraints: BoxConstraints(
-            maxWidth: textFieldW,
-          ),
+        new Expanded(
           child: new TextField(
             controller: controller,
 //            onChanged: ,

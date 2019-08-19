@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+
+
+  State<StatefulWidget> createState() {
+    return new HomeState();
+  }
+}
+
+
+class HomeState extends State <HomePage> {
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -9,9 +19,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("首页"),
       ),
-        body: new Center(
-          child: new Text("Wecome to Flutter World"),
-      ),
     );
   }
+
 }
